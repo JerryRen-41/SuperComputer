@@ -1,0 +1,36 @@
+#!/bin/bash
+#BSUB -J task6
+#BSUB -o task6.%J.out
+#BSUB -e task6.%J.err
+#BSUB -n 32
+#BSUB -W 00:30
+
+
+module load OpenMPI
+mpic++ -O3 -std=c++11 task6.cpp -o task6
+
+mpirun -np 1 ./task6 40 40
+
+mpirun -np 2 ./task6 40 40
+
+mpirun -np 4 ./task6 40 40
+
+mpirun -np 1 ./task6 400 600
+
+mpirun -np 2 ./task6 400 600
+
+mpirun -np 4 ./task6 400 600
+
+mpirun -np 8 ./task6 400 600
+
+mpirun -np 16 ./task6 400 600
+
+mpirun -np 1 ./task6 800 1200
+
+mpirun -np 4 ./task6 800 1200
+
+mpirun -np 8 ./task6 800 1200
+
+mpirun -np 16 ./task6 800 1200
+
+mpirun -np 32 ./task6 800 1200
