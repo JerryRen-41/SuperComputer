@@ -1,0 +1,117 @@
+Sender: LSF System <lsfadmin@polus-c2-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1347365: <task6> in cluster <MSUCluster> Done
+
+Job <task6> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Nov 23 21:37:34 2025
+Job was executed on host(s) <18*polus-c2-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Nov 23 21:37:35 2025
+                            <14*polus-c3-ib.bmc.hpc.cs.msu.ru>
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04> was used as the home directory.
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04/SuperComputer> was used as the working directory.
+Started at Sun Nov 23 21:37:35 2025
+Terminated at Sun Nov 23 21:51:47 2025
+Results reported at Sun Nov 23 21:51:47 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J task6
+#BSUB -o task6.%J.out
+#BSUB -e task6.%J.err
+#BSUB -n 32
+#BSUB -W 00:30
+
+
+module load OpenMPI
+mpic++ -O3 -std=c++11 task6.cpp -o task6
+
+mpirun -np 1 ./task6 40 40
+
+mpirun -np 2 ./task6 40 40
+
+mpirun -np 4 ./task6 40 40
+
+mpirun -np 1 ./task6 400 600
+
+mpirun -np 2 ./task6 400 600
+
+mpirun -np 4 ./task6 400 600
+
+mpirun -np 8 ./task6 400 600
+
+mpirun -np 16 ./task6 400 600
+
+mpirun -np 1 ./task6 800 1200
+
+mpirun -np 4 ./task6 800 1200
+
+mpirun -np 8 ./task6 800 1200
+
+mpirun -np 16 ./task6 800 1200
+
+mpirun -np 32 ./task6 800 1200
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   2909.95 sec.
+    Max Memory :                                 3083 MB
+    Average Memory :                             408.50 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              22
+    Max Threads :                                81
+    Run time :                                   854 sec.
+    Turnaround time :                            853 sec.
+
+The output (if any) follows:
+
+MPI PCG solver (fictitious domain), global grid 40x40, processes = 1
+Process grid Px x Py = 1 x 1
+[summary] iters=162, ||r||_E=4.227216e-05, ||dw||_E=0.000000, time=0.028048 s
+MPI PCG solver (fictitious domain), global grid 40x40, processes = 2
+Process grid Px x Py = 2 x 1
+[summary] iters=162, ||r||_E=4.227216e-05, ||dw||_E=0.000000, time=0.020376 s
+MPI PCG solver (fictitious domain), global grid 40x40, processes = 4
+Process grid Px x Py = 2 x 2
+[summary] iters=162, ||r||_E=4.227216e-05, ||dw||_E=0.000000, time=0.008651 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 1
+Process grid Px x Py = 1 x 1
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=64.907571 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 2
+Process grid Px x Py = 1 x 2
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=31.796831 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 4
+Process grid Px x Py = 2 x 2
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=16.208656 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 8
+Process grid Px x Py = 2 x 4
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=8.369234 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 16
+Process grid Px x Py = 4 x 4
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=5.433574 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 1
+Process grid Px x Py = 1 x 1
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=472.104478 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 4
+Process grid Px x Py = 2 x 2
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=124.882391 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 8
+Process grid Px x Py = 2 x 4
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=64.099953 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 16
+Process grid Px x Py = 4 x 4
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=32.918410 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 32
+Process grid Px x Py = 4 x 8
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=23.771534 s
+
+
+PS:
+
+Read file <task6.1347365.err> for stderr output of this job.
+
