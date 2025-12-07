@@ -1,0 +1,35 @@
+#!/bin/bash
+#BSUB -J "cuda"
+#BSUB -n 32
+#BSUB -q normal
+#BSUB -W 00:20
+#BSUB -oo cuda.%J.out
+#BSUB -eo cuda.%J.err
+#BSUB -gpu "num=1"
+
+source /polusfs/setenv/setup.SMPI
+
+echo "Compiling..."
+make ARCH=sm_60 cuda
+
+echo "Running..."
+
+mpirun -np 1 ./cuda 400 600
+
+mpirun -np 2 ./cuda 400 600
+
+mpirun -np 4 ./cuda 400 600
+
+mpirun -np 8 ./cuda 400 600
+
+mpirun -np 16 ./cuda 400 600
+
+mpirun -np 1 ./cuda 800 1200
+
+mpirun -np 4 ./cuda 800 1200
+
+mpirun -np 8 ./cuda 800 1200
+
+mpirun -np 16 ./cuda 800 1200
+
+mpirun -np 32 ./cuda 800 1200
