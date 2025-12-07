@@ -1,0 +1,179 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1422124: <cuda> in cluster <MSUCluster> Exited
+
+Job <cuda> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Dec  7 21:46:18 2025
+Job was executed on host(s) <2*polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <normal>, as user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Dec  7 21:46:19 2025
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04> was used as the home directory.
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04/SuperComputer/cuda> was used as the working directory.
+Started at Sun Dec  7 21:46:19 2025
+Terminated at Sun Dec  7 21:47:51 2025
+Results reported at Sun Dec  7 21:47:51 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J "cuda"
+#BSUB -n 2
+#BSUB -q normal
+#BSUB -W 00:20
+#BSUB -oo cuda.%J.out
+#BSUB -eo cuda.%J.err
+#BSUB -gpu "num=2"
+
+source /polusfs/setenv/setup.SMPI
+
+echo "Compiling..."
+make ARCH=sm_60 cuda
+
+echo "Running..."
+
+mpirun -np 1 ./cuda 400 600
+
+mpirun -np 2 ./cuda 400 600
+
+mpirun -np 4 ./cuda 400 600
+
+mpirun -np 8 ./cuda 400 600
+
+mpirun -np 16 ./cuda 400 600
+
+mpirun -np 1 ./cuda 800 1200
+
+mpirun -np 4 ./cuda 800 1200
+
+mpirun -np 8 ./cuda 800 1200
+
+mpirun -np 16 ./cuda 800 1200
+
+mpirun -np 32 ./cuda 800 1200
+------------------------------------------------------------
+
+Exited with exit code 1.
+
+Resource usage summary:
+
+    CPU time :                                   96.61 sec.
+    Max Memory :                                 155 MB
+    Average Memory :                             129.64 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              6
+    Max Threads :                                19
+    Run time :                                   96 sec.
+    Turnaround time :                            93 sec.
+
+The output (if any) follows:
+
+Compiling...
+make: `cuda' is up to date.
+Running...
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 1
+Process grid Px x Py = 1 x 1
+CUDA acceleration: ENABLED
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=9.490845 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.004936 s
+PCG total time     : 9.490845 s
+  MPI comm time    : 0.024135 s
+  H2D copy time    : 0.770955 s
+  D2H copy time    : 0.812938 s
+  kernel A time    : 0.137422 s
+  kernel Dinv time : 0.138865 s
+Finalize+IO time   : 0.227956 s
+Total program time : 9.723737 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 2
+Process grid Px x Py = 1 x 2
+CUDA acceleration: ENABLED
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=5.138451 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.002936 s
+PCG total time     : 5.138451 s
+  MPI comm time    : 0.166008 s
+  H2D copy time    : 0.305095 s
+  D2H copy time    : 0.481848 s
+  kernel A time    : 0.296752 s
+  kernel Dinv time : 0.321395 s
+Finalize+IO time   : 0.254848 s
+Total program time : 5.396234 s
+--------------------------------------------------------------------------
+There are not enough slots available in the system to satisfy the 4 slots
+that were requested by the application:
+  ./cuda
+
+Either request fewer slots for your application, or make more slots available
+for use.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+There are not enough slots available in the system to satisfy the 8 slots
+that were requested by the application:
+  ./cuda
+
+Either request fewer slots for your application, or make more slots available
+for use.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+There are not enough slots available in the system to satisfy the 16 slots
+that were requested by the application:
+  ./cuda
+
+Either request fewer slots for your application, or make more slots available
+for use.
+--------------------------------------------------------------------------
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 1
+Process grid Px x Py = 1 x 1
+CUDA acceleration: ENABLED
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=73.227139 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.018105 s
+PCG total time     : 73.227139 s
+  MPI comm time    : 0.087148 s
+  H2D copy time    : 5.929279 s
+  D2H copy time    : 6.216666 s
+  kernel A time    : 0.447476 s
+  kernel Dinv time : 0.436497 s
+Finalize+IO time   : 0.782227 s
+Total program time : 74.027471 s
+--------------------------------------------------------------------------
+There are not enough slots available in the system to satisfy the 4 slots
+that were requested by the application:
+  ./cuda
+
+Either request fewer slots for your application, or make more slots available
+for use.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+There are not enough slots available in the system to satisfy the 8 slots
+that were requested by the application:
+  ./cuda
+
+Either request fewer slots for your application, or make more slots available
+for use.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+There are not enough slots available in the system to satisfy the 16 slots
+that were requested by the application:
+  ./cuda
+
+Either request fewer slots for your application, or make more slots available
+for use.
+--------------------------------------------------------------------------
+--------------------------------------------------------------------------
+There are not enough slots available in the system to satisfy the 32 slots
+that were requested by the application:
+  ./cuda
+
+Either request fewer slots for your application, or make more slots available
+for use.
+--------------------------------------------------------------------------
+
+
+PS:
+
+Read file <cuda.1422124.err> for stderr output of this job.
+

@@ -1,0 +1,246 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1422740: <cuda> in cluster <MSUCluster> Done
+
+Job <cuda> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Dec  7 22:34:46 2025
+Job was executed on host(s) <20*polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <normal>, as user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Dec  7 22:34:47 2025
+                            <12*polus-c4-ib.bmc.hpc.cs.msu.ru>
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04> was used as the home directory.
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04/SuperComputer/cuda> was used as the working directory.
+Started at Sun Dec  7 22:34:47 2025
+Terminated at Sun Dec  7 22:39:05 2025
+Results reported at Sun Dec  7 22:39:05 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J "cuda"
+#BSUB -n 32
+#BSUB -q normal
+#BSUB -W 00:20
+#BSUB -oo cuda.%J.out
+#BSUB -eo cuda.%J.err
+#BSUB -gpu "num=2"
+
+source /polusfs/setenv/setup.SMPI
+
+echo "Compiling..."
+make ARCH=sm_60 cuda
+
+echo "Running..."
+
+mpirun -np 1 ./cuda 400 600
+
+mpirun -np 2 ./cuda 400 600
+
+mpirun -np 4 ./cuda 400 600
+
+mpirun -np 8 ./cuda 400 600
+
+mpirun -np 16 ./cuda 400 600
+
+mpirun -np 1 ./cuda 800 1200
+
+mpirun -np 2 ./cuda 800 1200
+
+mpirun -np 4 ./cuda 800 1200
+
+mpirun -np 8 ./cuda 800 1200
+
+mpirun -np 16 ./cuda 800 1200
+
+mpirun -np 32 ./cuda 800 1200
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1376.93 sec.
+    Max Memory :                                 1290 MB
+    Average Memory :                             441.00 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              24
+    Max Threads :                                109
+    Run time :                                   257 sec.
+    Turnaround time :                            259 sec.
+
+The output (if any) follows:
+
+Compiling...
+make: `cuda' is up to date.
+Running...
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 1
+Process grid Px x Py = 1 x 1
+CUDA acceleration: ENABLED
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=9.009536 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.004859 s
+PCG total time     : 9.009536 s
+  MPI comm time    : 0.021504 s
+  H2D copy time    : 0.692047 s
+  D2H copy time    : 0.724508 s
+  kernel A time    : 0.135366 s
+  kernel Dinv time : 0.136079 s
+Finalize+IO time   : 0.221660 s
+Total program time : 9.236055 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 2
+Process grid Px x Py = 1 x 2
+CUDA acceleration: ENABLED
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=5.131793 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.002926 s
+PCG total time     : 5.131793 s
+  MPI comm time    : 0.204079 s
+  H2D copy time    : 0.295959 s
+  D2H copy time    : 0.466654 s
+  kernel A time    : 0.291229 s
+  kernel Dinv time : 0.301210 s
+Finalize+IO time   : 0.240637 s
+Total program time : 5.375356 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 4
+Process grid Px x Py = 2 x 2
+CUDA acceleration: ENABLED
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=5.537239 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.002073 s
+PCG total time     : 5.537239 s
+  MPI comm time    : 0.072303 s
+  H2D copy time    : 0.115565 s
+  D2H copy time    : 0.243203 s
+  kernel A time    : 0.638520 s
+  kernel Dinv time : 0.642090 s
+Finalize+IO time   : 0.321794 s
+Total program time : 5.861105 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 8
+Process grid Px x Py = 2 x 4
+CUDA acceleration: ENABLED
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=3.455918 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.002032 s
+PCG total time     : 3.455918 s
+  MPI comm time    : 1.307367 s
+  H2D copy time    : 0.075626 s
+  D2H copy time    : 0.162660 s
+  kernel A time    : 0.689044 s
+  kernel Dinv time : 0.379911 s
+Finalize+IO time   : 0.372424 s
+Total program time : 3.830374 s
+MPI PCG solver (fictitious domain), global grid 400x600, processes = 16
+Process grid Px x Py = 4 x 4
+CUDA acceleration: ENABLED
+[summary] iters=2327, ||r||_E=6.863072e-03, ||dw||_E=0.000000, time=5.264740 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.002967 s
+PCG total time     : 5.264740 s
+  MPI comm time    : 2.473823 s
+  H2D copy time    : 0.062278 s
+  D2H copy time    : 0.113651 s
+  kernel A time    : 1.733945 s
+  kernel Dinv time : 0.428980 s
+Finalize+IO time   : 0.640326 s
+Total program time : 5.908033 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 1
+Process grid Px x Py = 1 x 1
+CUDA acceleration: ENABLED
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=72.112667 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.017883 s
+PCG total time     : 72.112667 s
+  MPI comm time    : 0.056687 s
+  H2D copy time    : 5.199169 s
+  D2H copy time    : 4.820247 s
+  kernel A time    : 0.475305 s
+  kernel Dinv time : 0.427960 s
+Finalize+IO time   : 0.714616 s
+Total program time : 72.845166 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 2
+Process grid Px x Py = 1 x 2
+CUDA acceleration: ENABLED
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=70.162509 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.009562 s
+PCG total time     : 70.162509 s
+  MPI comm time    : 0.894409 s
+  H2D copy time    : 3.275765 s
+  D2H copy time    : 3.191888 s
+  kernel A time    : 1.075008 s
+  kernel Dinv time : 1.003918 s
+Finalize+IO time   : 0.738399 s
+Total program time : 70.910470 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 4
+Process grid Px x Py = 2 x 2
+CUDA acceleration: ENABLED
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=21.855787 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.005132 s
+PCG total time     : 21.855787 s
+  MPI comm time    : 2.037918 s
+  H2D copy time    : 1.479882 s
+  D2H copy time    : 1.656219 s
+  kernel A time    : 0.767188 s
+  kernel Dinv time : 1.532156 s
+Finalize+IO time   : 0.811270 s
+Total program time : 22.672189 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 8
+Process grid Px x Py = 2 x 4
+CUDA acceleration: ENABLED
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=14.337898 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.003723 s
+PCG total time     : 14.337898 s
+  MPI comm time    : 1.839860 s
+  H2D copy time    : 0.714648 s
+  D2H copy time    : 0.869536 s
+  kernel A time    : 1.922963 s
+  kernel Dinv time : 1.885021 s
+Finalize+IO time   : 0.926211 s
+Total program time : 15.267833 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 16
+Process grid Px x Py = 4 x 4
+CUDA acceleration: ENABLED
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=18.628017 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.004620 s
+PCG total time     : 18.628017 s
+  MPI comm time    : 9.736273 s
+  H2D copy time    : 0.240858 s
+  D2H copy time    : 0.490057 s
+  kernel A time    : 2.313293 s
+  kernel Dinv time : 2.356973 s
+Finalize+IO time   : 1.126831 s
+Total program time : 19.759469 s
+MPI PCG solver (fictitious domain), global grid 800x1200, processes = 32
+Process grid Px x Py = 4 x 8
+CUDA acceleration: ENABLED
+[summary] iters=4486, ||r||_E=2.234008e-02, ||dw||_E=0.000000, time=14.968725 s
+
+=== Timing breakdown (rank 0) ===
+Init time          : 0.003447 s
+PCG total time     : 14.968725 s
+  MPI comm time    : 6.680629 s
+  H2D copy time    : 0.183388 s
+  D2H copy time    : 0.355516 s
+  kernel A time    : 2.362857 s
+  kernel Dinv time : 3.377261 s
+Finalize+IO time   : 1.259391 s
+Total program time : 16.231563 s
+
+
+PS:
+
+Read file <cuda.1422740.err> for stderr output of this job.
+
