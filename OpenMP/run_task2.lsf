@@ -1,0 +1,13 @@
+#!/bin/bash
+#BSUB -J "task2"
+#BSUB -n 5                      # M = floor(32/8) + 1 = 5
+#BSUB -W 00:15
+#BSUB -o task2.%J.out
+#BSUB -e task2.%J.err
+#BSUB -R "span[hosts=1]"
+
+
+# ===== 运行程序 =====
+echo "开始运行 Task2  ..."
+./task2
+echo "运行结束！"
