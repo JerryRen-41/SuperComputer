@@ -1,0 +1,136 @@
+Sender: LSF System <lsfadmin@polus-c4-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1346679: <task2> in cluster <MSUCluster> Done
+
+Job <task2> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Nov 23 19:05:22 2025
+Job was executed on host(s) <5*polus-c4-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Nov 23 19:05:23 2025
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04> was used as the home directory.
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04/SuperComputer> was used as the working directory.
+Started at Sun Nov 23 19:05:23 2025
+Terminated at Sun Nov 23 19:05:27 2025
+Results reported at Sun Nov 23 19:05:27 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J "task2"
+#BSUB -n 5                      # M = floor(32/8) + 1 = 5
+#BSUB -W 00:15
+#BSUB -o task2.%J.out
+#BSUB -e task2.%J.err
+#BSUB -R "span[hosts=1]"
+
+
+# ===== 运行程序 =====
+echo "开始运行 Task2  ..."
+./task2
+echo "运行结束！"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   7.52 sec.
+    Max Memory :                                 6 MB
+    Average Memory :                             4.33 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              4
+    Max Threads :                                5
+    Run time :                                   6 sec.
+    Turnaround time :                            5 sec.
+
+The output (if any) follows:
+
+开始运行 Task2  ...
+
+[baseline-seq] Grid 40x40, eps=h^2=0.0025
+[seq] iter 0  ||r||_E = 5.05724
+[seq] iter 200  ||r||_E = 0.639656
+[seq] iter 400  ||r||_E = 0.247962
+[seq] iter 600  ||r||_E = 0.096323
+[seq] iter 800  ||r||_E = 0.0374248
+[seq] iter 1000  ||r||_E = 0.0145411
+[seq] iter 1200  ||r||_E = 0.00564982
+[seq] iter 1400  ||r||_E = 0.00219519
+[seq] iter 1600  ||r||_E = 0.000852925
+[seq] iter 1800  ||r||_E = 0.000331398
+[seq] iter 2000  ||r||_E = 0.000128762
+[seq] iter 2200  ||r||_E = 5.00295e-05
+[seq] iter 2400  ||r||_E = 1.94386e-05
+[seq] iter 2600  ||r||_E = 7.5527e-06
+[seq] iter 2800  ||r||_E = 2.93454e-06
+[seq] iter 3000  ||r||_E = 1.14019e-06
+[seq-summary] iters=3028, final ||r||_E=9.99433e-07, time=0.908718 s
+Saved: result_seq_40x40.txt
+
+=== Grid 40x40  Threads=1  eps=h^2=0.0025 ===
+[omp] iter 0  ||r||_E = 5.05724
+[omp] iter 200  ||r||_E = 0.639656
+[omp] iter 400  ||r||_E = 0.247962
+[omp] iter 600  ||r||_E = 0.096323
+[omp] iter 800  ||r||_E = 0.0374248
+[omp] iter 1000  ||r||_E = 0.0145411
+[omp] iter 1200  ||r||_E = 0.00564982
+[omp] iter 1400  ||r||_E = 0.00219519
+[omp] iter 1600  ||r||_E = 0.000852925
+[omp] iter 1800  ||r||_E = 0.000331398
+[omp] iter 2000  ||r||_E = 0.000128762
+[omp] iter 2200  ||r||_E = 5.00295e-05
+[omp] iter 2400  ||r||_E = 1.94386e-05
+[omp] iter 2600  ||r||_E = 7.5527e-06
+[omp] iter 2800  ||r||_E = 2.93454e-06
+[omp] iter 3000  ||r||_E = 1.14019e-06
+[omp-summary] iters=3028, final ||r||_E=9.99433e-07, time=1.01529 s
+Saved: result_omp_40x40_t1.txt
+
+=== Grid 40x40  Threads=4  eps=h^2=0.0025 ===
+[omp] iter 0  ||r||_E = 5.05724
+[omp] iter 200  ||r||_E = 0.639656
+[omp] iter 400  ||r||_E = 0.247962
+[omp] iter 600  ||r||_E = 0.096323
+[omp] iter 800  ||r||_E = 0.0374248
+[omp] iter 1000  ||r||_E = 0.0145411
+[omp] iter 1200  ||r||_E = 0.00564982
+[omp] iter 1400  ||r||_E = 0.00219519
+[omp] iter 1600  ||r||_E = 0.000852925
+[omp] iter 1800  ||r||_E = 0.000331398
+[omp] iter 2000  ||r||_E = 0.000128762
+[omp] iter 2200  ||r||_E = 5.00295e-05
+[omp] iter 2400  ||r||_E = 1.94386e-05
+[omp] iter 2600  ||r||_E = 7.5527e-06
+[omp] iter 2800  ||r||_E = 2.93454e-06
+[omp] iter 3000  ||r||_E = 1.14019e-06
+[omp-summary] iters=3028, final ||r||_E=9.99433e-07, time=0.356572 s
+Saved: result_omp_40x40_t4.txt
+
+=== Grid 40x40  Threads=16  eps=h^2=0.0025 ===
+[omp] iter 0  ||r||_E = 5.05724
+[omp] iter 200  ||r||_E = 0.639656
+[omp] iter 400  ||r||_E = 0.247962
+[omp] iter 600  ||r||_E = 0.096323
+[omp] iter 800  ||r||_E = 0.0374248
+[omp] iter 1000  ||r||_E = 0.0145411
+[omp] iter 1200  ||r||_E = 0.00564982
+[omp] iter 1400  ||r||_E = 0.00219519
+[omp] iter 1600  ||r||_E = 0.000852925
+[omp] iter 1800  ||r||_E = 0.000331398
+[omp] iter 2000  ||r||_E = 0.000128762
+[omp] iter 2200  ||r||_E = 5.00295e-05
+[omp] iter 2400  ||r||_E = 1.94386e-05
+[omp] iter 2600  ||r||_E = 7.5527e-06
+[omp] iter 2800  ||r||_E = 2.93454e-06
+[omp] iter 3000  ||r||_E = 1.14019e-06
+[omp-summary] iters=3028, final ||r||_E=9.99433e-07, time=0.258314 s
+Saved: result_omp_40x40_t16.txt
+运行结束！
+
+
+PS:
+
+Read file <task2.1346679.err> for stderr output of this job.
+

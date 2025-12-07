@@ -1,0 +1,92 @@
+Sender: LSF System <lsfadmin@polus-c4-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1341817: <task3> in cluster <MSUCluster> Done
+
+Job <task3> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Wed Nov 19 12:47:54 2025
+Job was executed on host(s) <5*polus-c4-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Wed Nov 19 12:47:55 2025
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04> was used as the home directory.
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04/SuperComputer> was used as the working directory.
+Started at Wed Nov 19 12:47:55 2025
+Terminated at Wed Nov 19 13:09:57 2025
+Results reported at Wed Nov 19 13:09:57 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J "task3"
+#BSUB -n 5                      # M = floor(32/8) + 1 = 5
+#BSUB -W 00:30
+#BSUB -o task3.%J.out
+#BSUB -e task3.%J.err
+#BSUB -R "span[hosts=1]"
+
+
+# ===== 运行程序 =====
+echo "开始运行 Task3 (Steepest Descent + OpenMP) ..."
+./task3
+echo "运行结束！"
+
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   10338.50 sec.
+    Max Memory :                                 89 MB
+    Average Memory :                             71.13 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   2 MB
+    Max Processes :                              4
+    Max Threads :                                36
+    Run time :                                   1326 sec.
+    Turnaround time :                            1323 sec.
+
+The output (if any) follows:
+
+开始运行 Task3 (Steepest Descent + OpenMP) ...
+
+>>> Batch run (multiple grids):
+Grid        Threads   Iters     Time(s)       ||r||_E       
+------------------------------------------------------------
+=== Grid 400x600  Threads=2  (eps=3.6e-05) ===
+[summary] iters=2749, ||r||_E=7.376149e-03, ||dw||_E=0.000000, time=132.982183 s
+Saved solution to: result_400x600_t2.txt
+400x600     2         2749      132.982183    7.376149e-03  
+=== Grid 400x600  Threads=4  (eps=3.600000e-05) ===
+[summary] iters=2749, ||r||_E=7.376149e-03, ||dw||_E=0.000000, time=68.166429 s
+Saved solution to: result_400x600_t4.txt
+400x600     4         2749      68.166429     7.376149e-03  
+=== Grid 400x600  Threads=8  (eps=3.600000e-05) ===
+[summary] iters=2749, ||r||_E=7.376149e-03, ||dw||_E=0.000000, time=36.760456 s
+Saved solution to: result_400x600_t8.txt
+400x600     8         2749      36.760456     7.376149e-03  
+=== Grid 400x600  Threads=16  (eps=3.600000e-05) ===
+[summary] iters=2749, ||r||_E=7.376149e-03, ||dw||_E=0.000000, time=26.923483 s
+Saved solution to: result_400x600_t16.txt
+400x600     16        2749      26.923483     7.376149e-03  
+=== Grid 800x1200  Threads=4  (eps=9.000000e-06) ===
+[summary] iters=5237, ||r||_E=3.072694e-02, ||dw||_E=0.000000, time=505.865782 s
+Saved solution to: result_800x1200_t4.txt
+800x1200    4         5237      505.865782    3.072694e-02  
+=== Grid 800x1200  Threads=8  (eps=9.000000e-06) ===
+[summary] iters=5237, ||r||_E=3.072694e-02, ||dw||_E=0.000000, time=273.394149 s
+Saved solution to: result_800x1200_t8.txt
+800x1200    8         5237      273.394149    3.072694e-02  
+=== Grid 800x1200  Threads=16  (eps=9.000000e-06) ===
+[summary] iters=5237, ||r||_E=3.072694e-02, ||dw||_E=0.000000, time=156.307519 s
+Saved solution to: result_800x1200_t16.txt
+800x1200    16        5237      156.307519    3.072694e-02  
+=== Grid 800x1200  Threads=32  (eps=9.000000e-06) ===
+[summary] iters=5237, ||r||_E=3.072694e-02, ||dw||_E=0.000000, time=116.491348 s
+Saved solution to: result_800x1200_t32.txt
+800x1200    32        5237      116.491348    3.072694e-02  
+运行结束！
+
+
+PS:
+
+Read file <task3.1341817.err> for stderr output of this job.
+
