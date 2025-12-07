@@ -1,0 +1,14 @@
+#!/bin/bash
+#BSUB -J "task11"             # 任务名
+#BSUB -n 1                   # 只用1个CPU核（顺序程序）
+#BSUB -W 00:20               # 预估时间 20 分钟，够用就行
+#BSUB -q short               # 队列名（按你学校文档来，如果有别的，比如 cpu / normal 就改这里）
+#BSUB -oo task11.%J.out       # 标准输出（覆盖）
+#BSUB -eo task11.%J.err       # 标准错误（覆盖）
+
+g++ -O3 -std=c++11 task1.cpp -o task1
+
+
+echo "Start sequential PCG ..."
+./task11
+echo "Done."

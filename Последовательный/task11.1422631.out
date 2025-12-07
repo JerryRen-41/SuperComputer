@@ -1,0 +1,80 @@
+Sender: LSF System <lsfadmin@polus-c3-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1422631: <task11> in cluster <MSUCluster> Done
+
+Job <task11> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Dec  7 22:11:41 2025
+Job was executed on host(s) <polus-c3-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sun Dec  7 22:11:42 2025
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04> was used as the home directory.
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04/SuperComputer> was used as the working directory.
+Started at Sun Dec  7 22:11:42 2025
+Terminated at Sun Dec  7 22:22:52 2025
+Results reported at Sun Dec  7 22:22:52 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J "task11"             # 任务名
+#BSUB -n 1                   # 只用1个CPU核（顺序程序）
+#BSUB -W 00:20               # 预估时间 20 分钟，够用就行
+#BSUB -q short               # 队列名（按你学校文档来，如果有别的，比如 cpu / normal 就改这里）
+#BSUB -oo task11.%J.out       # 标准输出（覆盖）
+#BSUB -eo task11.%J.err       # 标准错误（覆盖）
+
+g++ -O3 -std=c++11 task1.cpp -o task1
+
+
+echo "Start sequential PCG ..."
+./task11
+echo "Done."
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   669.60 sec.
+    Max Memory :                                 61 MB
+    Average Memory :                             48.61 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              5
+    Max Threads :                                6
+    Run time :                                   670 sec.
+    Turnaround time :                            671 sec.
+
+The output (if any) follows:
+
+Start sequential PCG ...
+Start sequential PCG ...
+Grid 400x600
+  iter 200, ||r||_E = 3.91801
+  iter 400, ||r||_E = 0.432432
+  iter 600, ||r||_E = 0.0152346
+  iter 800, ||r||_E = 0.000203764
+  iter 1000, ||r||_E = 2.75758e-05
+iters=1164  res=9.80203e-07  time=73.6218 s
+Saved: result_400x600.txt
+Grid 800x1200
+  iter 200, ||r||_E = 14.1542
+  iter 400, ||r||_E = 5.1912
+  iter 600, ||r||_E = 1.69925
+  iter 800, ||r||_E = 0.634667
+  iter 1000, ||r||_E = 0.166071
+  iter 1200, ||r||_E = 0.0205834
+  iter 1400, ||r||_E = 0.0037394
+  iter 1600, ||r||_E = 0.000271435
+  iter 1800, ||r||_E = 4.27739e-05
+  iter 2000, ||r||_E = 2.48173e-05
+  iter 2200, ||r||_E = 6.2805e-06
+iters=2344  res=9.9541e-07  time=592.356 s
+Saved: result_800x1200.txt
+Done.
+Done.
+
+
+PS:
+
+Read file <task11.1422631.err> for stderr output of this job.
+
