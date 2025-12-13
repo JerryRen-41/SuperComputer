@@ -1,0 +1,52 @@
+#!/bin/bash
+#BSUB -J task8
+#BSUB -o task8.%J.out
+#BSUB -e task8.%J.err
+#BSUB -n 32              # 4 个 MPI 进程 × 最多 8 个 OMP 线程 = 32 个核
+#BSUB -W 00:30
+
+module load OpenMPI/4.0.0
+
+# 1) 编译（只编译一次）
+mpicxx -std=c++11 -O3 -fopenmp task8.cpp -o task8 \
+  || { echo "Compile error"; exit 1; }
+
+echo "===== 1 MPI × 4 OMP ====="
+export OMP_NUM_THREADS=4
+mpirun -np 1 ./task8 40 40
+
+echo "===== 2 MPI × 4 OMP ====="
+export OMP_NUM_THREADS=4
+mpirun -np 2 ./task8 40 40
+
+echo "===== 2 MPI × 1 OMP ====="
+export OMP_NUM_THREADS=1
+mpirun -np 2 ./task8 400 600
+
+echo "===== 2 MPI × 2 OMP ====="
+export OMP_NUM_THREADS=2
+mpirun -np 2 ./task8 400 600
+
+echo "===== 2 MPI × 4 OMP ====="
+export OMP_NUM_THREADS=4
+mpirun -np 2 ./task8 400 600
+
+echo "===== 2 MPI × 8 OMP ====="
+export OMP_NUM_THREADS=8
+mpirun -np 2 ./task8 400 600
+
+echo "===== 4 MPI × 1 OMP ====="
+export OMP_NUM_THREADS=1
+mpirun -np 4 ./task8 800 1200
+
+echo "===== 4 MPI × 2 OMP ====="
+export OMP_NUM_THREADS=2
+mpirun -np 4 ./task8 800 1200
+
+echo "===== 4 MPI × 4 OMP ====="
+export OMP_NUM_THREADS=4
+mpirun -np 4 ./task8 800 1200
+
+echo "===== 4 MPI × 8 OMP ====="
+export OMP_NUM_THREADS=8
+mpirun -np 4 ./task8 800 1200
