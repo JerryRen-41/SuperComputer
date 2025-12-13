@@ -1,0 +1,114 @@
+Sender: LSF System <lsfadmin@polus-c4-ib.bmc.hpc.cs.msu.ru>
+Subject: Job 1449398: <task8> in cluster <MSUCluster> Done
+
+Job <task8> was submitted from host <polus-ib.bmc.hpc.cs.msu.ru> by user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sat Dec 13 18:03:05 2025
+Job was executed on host(s) <15*polus-c4-ib.bmc.hpc.cs.msu.ru>, in queue <short>, as user <edu-cmc-skmodel25-618-1-04> in cluster <MSUCluster> at Sat Dec 13 18:03:08 2025
+                            <16*polus-c2-ib.bmc.hpc.cs.msu.ru>
+                            <1*polus-c3-ib.bmc.hpc.cs.msu.ru>
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04> was used as the home directory.
+</home_edu/edu-cmc-skmodel25-618-1/edu-cmc-skmodel25-618-1-04/SuperComputer> was used as the working directory.
+Started at Sat Dec 13 18:03:08 2025
+Terminated at Sat Dec 13 18:06:06 2025
+Results reported at Sat Dec 13 18:06:06 2025
+
+Your job looked like:
+
+------------------------------------------------------------
+# LSBATCH: User input
+#!/bin/bash
+#BSUB -J task8
+#BSUB -o task8.%J.out
+#BSUB -e task8.%J.err
+#BSUB -n 32              # 4 个 MPI 进程 × 最多 8 个 OMP 线程 = 32 个核
+#BSUB -W 00:30
+
+module load OpenMPI/4.0.0
+
+# 1) 编译（只编译一次）
+mpicxx -std=c++11 -O3 -fopenmp task8.cpp -o task8 \
+  || { echo "Compile error"; exit 1; }
+
+echo "===== 1 MPI × 4 OMP ====="
+export OMP_NUM_THREADS=4
+mpirun -np 1 ./task8 40 40
+
+echo "===== 2 MPI × 4 OMP ====="
+export OMP_NUM_THREADS=4
+mpirun -np 2 ./task8 40 40
+
+echo "===== 2 MPI × 1 OMP ====="
+export OMP_NUM_THREADS=1
+mpirun -np 2 ./task8 400 600
+
+echo "===== 2 MPI × 2 OMP ====="
+export OMP_NUM_THREADS=2
+mpirun -np 2 ./task8 400 600
+
+echo "===== 2 MPI × 4 OMP ====="
+export OMP_NUM_THREADS=4
+mpirun -np 2 ./task8 400 600
+
+echo "===== 2 MPI × 8 OMP ====="
+export OMP_NUM_THREADS=8
+mpirun -np 2 ./task8 400 600
+
+echo "===== 4 MPI × 1 OMP ====="
+export OMP_NUM_THREADS=1
+mpirun -np 4 ./task8 800 1200
+
+echo "===== 4 MPI × 2 OMP ====="
+export OMP_NUM_THREADS=2
+mpirun -np 4 ./task8 800 1200
+
+echo "===== 4 MPI × 4 OMP ====="
+export OMP_NUM_THREADS=4
+mpirun -np 4 ./task8 800 1200
+
+echo "===== 4 MPI × 8 OMP ====="
+
+(... more ...)
+------------------------------------------------------------
+
+Successfully completed.
+
+Resource usage summary:
+
+    CPU time :                                   1807.58 sec.
+    Max Memory :                                 401 MB
+    Average Memory :                             315.57 MB
+    Total Requested Memory :                     -
+    Delta Memory :                               -
+    Max Swap :                                   -
+    Max Processes :                              10
+    Max Threads :                                61
+    Run time :                                   179 sec.
+    Turnaround time :                            181 sec.
+
+The output (if any) follows:
+
+===== 1 MPI × 4 OMP =====
+[summary] iters=90, ||r||=8.273206e-09, time=0.004712 s
+===== 2 MPI × 4 OMP =====
+[summary] iters=90, ||r||=8.273206e-09, time=0.003478 s
+===== 2 MPI × 1 OMP =====
+[summary] iters=1412, ||r||=9.624281e-09, time=7.500332 s
+===== 2 MPI × 2 OMP =====
+[summary] iters=1412, ||r||=9.624282e-09, time=6.343893 s
+===== 2 MPI × 4 OMP =====
+[summary] iters=1412, ||r||=9.624281e-09, time=4.000413 s
+===== 2 MPI × 8 OMP =====
+[summary] iters=1412, ||r||=9.624281e-09, time=2.988352 s
+===== 4 MPI × 1 OMP =====
+[summary] iters=2922, ||r||=9.724356e-09, time=38.700510 s
+===== 4 MPI × 2 OMP =====
+[summary] iters=2922, ||r||=9.724238e-09, time=27.167954 s
+===== 4 MPI × 4 OMP =====
+[summary] iters=2922, ||r||=9.724179e-09, time=19.100784 s
+===== 4 MPI × 8 OMP =====
+[summary] iters=2922, ||r||=9.724180e-09, time=62.186709 s
+
+
+PS:
+
+Read file <task8.1449398.err> for stderr output of this job.
+
